@@ -8,7 +8,10 @@ class TodosController < ApplicationController
   def create
     @todo = Todo.new(todo_params)
     if @todo.save
-      redirect_to :root
+      respond_to do |format|
+        format.html {redirect_to :root}
+        format.json {render json: @todo}
+      end
     else
       render :index, alert: "Todoを入力してください"
     end
