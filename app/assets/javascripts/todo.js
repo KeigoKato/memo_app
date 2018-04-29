@@ -10,10 +10,14 @@ $(function() {
     var textField = $(".js-form__text-field");
     var todo = textField.val();
     $.ajax({
-      type: "POST",
-      url: "/todos.json",
-      data: { todo: { content: {todo} } },
-      dataType: "json"
+      type: 'POST',
+      url: '/todos.json',
+      data: {
+        todo: {
+          content: todo
+        }
+      },
+      dataType: 'json'
     })
     .done(function(data){
       var html = buildHTML(data);
